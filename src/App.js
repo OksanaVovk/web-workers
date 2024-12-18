@@ -17,6 +17,7 @@ function App() {
     worker.onmessage = ({ data }) => {
       setResult(`Result: ${data}`);
     };
+
     worker.postMessage({ data: inputValue });
 
     setInputValue("");

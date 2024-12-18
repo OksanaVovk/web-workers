@@ -1,5 +1,4 @@
 onmessage = ({ data }) => {
-  console.log(data.data);
   const fib = (n) => {
     let a = 0,
       b = 1;
