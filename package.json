@@ -2,7 +2,6 @@
   "name": "web-workers-react-solution",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://oksanavovk.github.io/WebWorkers/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

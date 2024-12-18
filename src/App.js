@@ -1,26 +1,27 @@
 import { useState } from "react";
 import "./App.css";
-const worker = new Worker("worker.js");
 
 //Note: please, do dot change placeholder and data-testid attributes
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState("Calculating...");
+  const [previousWorker, setPreviousWorker] = useState({ terminate: () => {} });
 
   const handelChange = (e) => {
     setInputValue(Number(e.currentTarget.value));
   };
 
   const onBtnClick = () => {
+    previousWorker.terminate();
     setResult("Calculating...");
+    const worker = new Worker("worker.js");
     worker.onmessage = ({ data }) => {
       setResult(`Result: ${data}`);
     };
+    setPreviousWorker(worker);
 
     worker.postMessage({ data: inputValue });
-
-    setInputValue("");
   };
 
   return (
